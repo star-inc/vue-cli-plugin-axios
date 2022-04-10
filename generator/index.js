@@ -6,12 +6,7 @@ module.exports = (api, options, rootOptions) => {
     });
 
     // Render vuetify plugin file
-    api.render(
-        {
-            "./src/plugins/axios.js": "./templates/plugins/axios.js"
-        },
-        options
-    );
+    api.render({"./src/plugins/axios.js": "./templates/plugins/axios.js"}, options);
 
     const helpers = require('./helpers')(api)
 
@@ -19,11 +14,10 @@ module.exports = (api, options, rootOptions) => {
     api.onCreateComplete(() => {
         // Modify main.js
         helpers.updateMain(src => {
-            let vueImportIndex = src.findIndex(line => line.match(/^import Vue/));
-
-            let axiosImportIndex = src.findIndex(line => line.match(/\/plugins\/axios/));
+            const vueImportIndex = src.findIndex(line => line.match(/^import Vue/));
+            const axiosImportIndex = src.findIndex(line => line.match(/\/plugins\/axios/));
             if (axiosImportIndex < 0) {
-                src.splice(++vueImportIndex, 0, "import './plugins/axios'");
+                src.splice(vueImportIndex + 1, 0, "import './plugins/axios'");
             }
             return src;
         });

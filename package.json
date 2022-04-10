@@ -1,7 +1,7 @@
 {
   "name": "vue-cli-plugin-axios-x",
   "description": "Vue-cli-3 plugin: axios",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Star Inc.",
   "license": "MIT",
   "homepage": "https://github.com/star-inc/vue-cli-plugin-axios-x#readme",
