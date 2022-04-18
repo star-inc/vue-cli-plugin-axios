@@ -26,7 +26,7 @@ module.exports = function (api) {
                 if (config.babel) {
                     config.babel = callback(config.babel)
                 } else {
-                    // TODO: error handling here?
+                    // ToDo: error handling here?
                 }
             }
 
@@ -36,7 +36,7 @@ module.exports = function (api) {
                 const options = {encoding: 'utf8'};
                 fs.writeFileSync(configPath, data, options)
             } else {
-                // TODO: handle if babel config doesn't exist
+                // ToDo: handle if babel config doesn't exist
             }
         },
     }

@@ -39,23 +39,25 @@ _axios.interceptors.response.use(
     }
 );
 
-Plugin.install = function (Vue) {
-    Vue.axios = _axios;
-    window.axios = _axios;
-    Object.defineProperties(Vue.prototype, {
-        axios: {
-            get() {
-                return _axios;
-            }
-        },
-        $axios: {
-            get() {
-                return _axios;
-            }
-        },
-    });
-};
+const extension = {
+    install: (Vue) => {
+        Vue.axios = _axios;
+        window.axios = _axios;
+        Object.defineProperties(Vue.prototype, {
+            axios: {
+                get() {
+                    return _axios;
+                }
+            },
+            $axios: {
+                get() {
+                    return _axios;
+                }
+            },
+        });
+    }
+}
 
-Vue.use(Plugin)
+Vue.use(extension)
 
-export default Plugin;
+export default extension;
