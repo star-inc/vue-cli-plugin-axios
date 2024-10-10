@@ -13,7 +13,7 @@ module.exports = async (api, options) => {
     } = axiosPkg["dist-tags"];
     api.extendPackage({
         devDependencies: {
-            axios: `${axiosPkgVersion}`,
+            axios: `^${axiosPkgVersion}`,
         },
     });
 
