@@ -5,19 +5,17 @@ const {
     updateMain,
 } = require("./updater");
 
-module.exports = (api, options) => {
+module.exports = async (api, options) => {
     // Install latest Axios
-    queryPackage("axios").
-        then((data) => {
-            const {
-                latest: pkgVersion,
-            } = data["dist-tags"];
-            api.extendPackage({
-                devDependencies: {
-                    axios: `${pkgVersion}`,
-                },
-            });
-        });
+    const axiosPkg = await queryPackage("axios");
+    const {
+        latest: axiosPkgVersion,
+    } = axiosPkg["dist-tags"];
+    api.extendPackage({
+        devDependencies: {
+            axios: `${axiosPkgVersion}`,
+        },
+    });
 
     // Inject config files
     api.render({
