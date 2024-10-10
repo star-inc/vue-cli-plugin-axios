@@ -1,17 +1,14 @@
 "use strict";
 
 const {
+    queryPackage,
     updateMain,
 } = require("./updater");
 
-const {
-    get,
-} = require("axios");
-
 module.exports = (api, options) => {
     // Install latest Axios
-    get("https://registry.npmjs.org/axios").
-        then(({ data }) => {
+    queryPackage("axios").
+        then((data) => {
             const {
                 latest: pkgVersion,
             } = data["dist-tags"];

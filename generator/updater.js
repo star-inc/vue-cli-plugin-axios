@@ -1,6 +1,22 @@
 "use strict";
 
 const fs = require("node:fs");
+const https = require("node:https");
+
+exports.queryPackage = (pkgName) => new Promise((resolve) => {
+    https.request(`https://registry.npmjs.org/${pkgName}`, (res) => {
+        res.setEncoding("utf8");
+
+        let chunks = "";
+        res.on("data", (chunk) => {
+            chunks += chunk;
+        });
+        res.on("end", () => {
+            const data = JSON.parse(chunks);
+            resolve(data);
+        });
+    }).end();
+});
 
 exports.updateMain = (api, callback) => {
     const tsPath = api.resolve("./src/main.ts");
