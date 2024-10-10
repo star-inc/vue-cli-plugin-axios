@@ -10,8 +10,8 @@ This is the fork of [vue-cli-plugin-axios](https://www.npmjs.com/package/vue-cli
 
 For legacy Vue2 CLI.
 
-```shell
-    vue add axios-x
+```sh
+vue add axios-x
 ```
 
 ## License

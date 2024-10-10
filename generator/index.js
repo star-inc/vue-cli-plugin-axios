@@ -4,21 +4,33 @@ const {
     updateMain,
 } = require("./updater");
 
-module.exports = (api, options) => {
-    api.extendPackage({
-        devDependencies: {
-            axios: "latest",
-        },
-    });
+const {
+    get,
+} = require("axios");
 
+module.exports = (api, options) => {
+    // Install latest Axios
+    get("https://registry.npmjs.org/axios").
+        then(({ data }) => {
+            const {
+                latest: pkgVersion,
+            } = data["dist-tags"];
+            api.extendPackage({
+                devDependencies: {
+                    axios: `${pkgVersion}`,
+                },
+            });
+        });
+
+    // Inject config files
     api.render({
         "./src/plugins/axios.js": "./templates/plugins/axios.js",
     }, options);
 
 
-    // adapted from https://github.com/Akryum/vue-cli-plugin-apollo/blob/master/generator/index.js#L68-L91
+    // Adapted from https://github.com/Akryum/vue-cli-plugin-apollo/blob/master/generator/index.js#L68-L91
     api.onCreateComplete(() => {
-        // Modify main.js
+        // Inject "import axios" into main.js/main.ts
         updateMain(api, (src) => {
             const vueImportIndex = src.findIndex(
                 (line) => line.match(/^import Vue/),
