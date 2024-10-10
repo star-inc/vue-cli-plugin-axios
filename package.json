@@ -1,14 +1,13 @@
 {
   "name": "vue-cli-plugin-axios-x",
   "description": "Vue-cli-3 plugin: axios",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "author": "Star Inc.",
   "license": "MIT",
   "homepage": "https://github.com/star-inc/vue-cli-plugin-axios-x#readme",
   "bugs": {
     "url": "https://github.com/star-inc/vue-cli-plugin-axios-x/issues"
   },
-  "main": "index.js",
   "scripts": {},
   "keywords": [
     "vue",
@@ -17,7 +16,7 @@
     "plugin"
   ],
   "devDependencies": {
-    "axios": "^0.26.1",
-    "vue": "^2.6.14"
+    "axios": "latest",
+    "vue": "^2.7.16"
   }
 }
