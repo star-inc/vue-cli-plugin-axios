@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-axios-x",
-  "description": "Vue-cli-3 plugin: axios",
+  "description": "The secure Axios plugin for Vue.js 2",
   "version": "0.2.5",
   "author": "Star Inc.",
   "license": "MIT",
@@ -8,6 +8,7 @@
   "bugs": {
     "url": "https://github.com/star-inc/vue-cli-plugin-axios-x/issues"
   },
+  "main": "index.js",
   "scripts": {},
   "keywords": [
     "vue",
